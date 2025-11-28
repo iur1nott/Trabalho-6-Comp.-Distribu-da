@@ -114,18 +114,14 @@ Desvantagens:
 Comparação:
 <img width="1989" height="1181" alt="download (15)" src="https://github.com/user-attachments/assets/6774d6be-d355-46c7-966c-27c6c60b914b" />
 
-<img width="1160" height="1367" alt="download (16)" src="https://github.com/user-attachments/assets/e06f7b82-e83b-405d-a869-4c7d665144b6" />
-
-📊 RESUMO DOS TESTES DE CARGA - COMPARAÇÃO ENTRE PROTOCOLOS
-==========================================================================================
-         Latency_ms        Throughput_percent       CPU_usage_percent         \
-               mean    std               mean   std              mean    std   
-Protocol                                                                       
-GraphQL       45.84   4.93              76.99  7.79             76.76  25.96   
-REST          26.80   1.01              79.27  8.86             45.40  16.16   
-SOAP         117.83  34.10              66.79  2.31             90.21   8.30   
-gRPC          19.31   4.92              90.00  4.74             50.70  29.51   
+<img width="1160" height="851" alt="download (16)" src="https://github.com/user-attachments/assets/af80ef1d-84a3-4047-90a2-b95c0934c21a" />
 
 
+| **Protocolo** | **Latência (ms)** <br> *média* | **Latência (ms)** <br> *desvio padrão* | **Throughput (%)** <br> *média* | **Throughput (%)** <br> *desvio padrão* | **Uso de CPU (%)** <br> *média* | **Uso de CPU (%)** <br> *desvio padrão* |
+| ------------- | ------------------------------ | -------------------------------------- | ------------------------------- | --------------------------------------- | ------------------------------- | --------------------------------------- |
+| **GraphQL**   | 45.84                          | 4.93                                   | 76.99                           | 7.79                                    | 76.76                           | 25.96                                   |
+| **REST**      | 26.80                          | 1.01                                   | 79.27                           | 8.86                                    | 45.40                           | 16.16                                   |
+| **SOAP**      | 117.83                         | 34.10                                  | 66.79                           | 2.31                                    | 90.21                           | 8.30                                    |
+| **gRPC**      | **19.31**                      | 4.92                                   | **90.00**                       | 4.74                                    | 50.70                           | 29.51                                   |
 
 
