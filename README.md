@@ -125,3 +125,54 @@ Comparação:
 | **gRPC**      | **19.31**                      | 4.92                                   | **90.00**                       | 4.74                                    | 50.70                           | 29.51                                   |
 
 
+Análise:
+
+## 1. **gRPC** - Mais Eficiente
+**Justificativa:**
+- Usa HTTP/2 com multiplexação (múltiplas requisições numa mesma conexão TCP)
+- Serialização binária com Protocol Buffers (muito mais compacta que JSON/XML)
+- Menor overhead de rede e parsing mais rápido
+- Streaming nativo bidirecional
+- Conexões persistentes por padrão
+
+## 2. **REST** - Segundo Lugar
+**Justificativa:**
+- Protocolo stateless simples
+- Overhead menor que GraphQL/SOAP
+- Cache HTTP fácil de implementar
+- Sem overhead de parsing de queries complexas
+- Conexões podem ser mantidas com Keep-Alive
+
+## 3. **GraphQL** - Terceiro Lugar  
+**Justificativa:**
+- Overhead de parsing de queries GraphQL
+- Risco de queries complexas que sobrecarregam o servidor
+- Over-fetching evitado, mas pode ter under-fetching (múltiplas round trips)
+- Respostas tipicamente em JSON (maior que binary protocols)
+
+## 4. **SOAP** - Menos Eficiente
+**Justificativa:**
+- XML extremamente verboso (muito overhead)
+- Parsing de XML é computacionalmente caro
+- WSDL e schemas complexos
+- Base64 para dados binários aumenta tamanho em ~33%
+
+## **Detalhes Técnicos:**
+
+### gRPC Performance:
+```python
+# Binary Protocol Buffers vs JSON
+JSON: {"id": 1, "title": "Song", "artist": "Artist"}  # ~50 bytes
+Protobuf: \x08\x01\x12\x04Song\x1a\x06Artist         # ~15 bytes
+```
+
+### REST vs GraphQL:
+- **REST**: `GET /tracks` → resposta fixa, cacheável
+- **GraphQL**: Parsing de query + resolução dinâmica + overhead
+
+### Cenários de Carga:
+- **Alta concorrência**: gRPC > REST > GraphQL > SOAP
+- **Largura de banda**: gRPC > GraphQL ≈ REST > SOAP  
+- **Processamento CPU**: gRPC > REST > GraphQL > SOAP
+
+**Recomendação para testes:** Comece com gRPC para baseline de performance máxima, depois compare com REST para casos de uso específicos.
